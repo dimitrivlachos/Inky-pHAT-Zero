@@ -56,4 +56,9 @@ def update_display(city):
     inky_display.set_image(img)
     inky_display.show()
 
-update_display('London')
+def display_image():
+    img = Image.open('weather.png')
+    inky_display.set_image(img)
+    inky_display.show()
+
+#update_display('London')
