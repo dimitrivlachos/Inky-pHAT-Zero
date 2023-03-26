@@ -62,3 +62,4 @@ def display_image():
     inky_display.show()
 
 #update_display('London')
+display_image()
