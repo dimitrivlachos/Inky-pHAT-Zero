@@ -28,7 +28,10 @@ def get_weather(city):
         token = f.read().decode('utf-8')
 
     r = requests.get(f'http://api.openweathermap.org/data/2.5/weather?q={city},uk&APPID={token}')
-    return r.json()
+    r = r.json()
+
+    print(r)
+    return r
 
 
 def update_display(city):
