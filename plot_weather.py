@@ -17,8 +17,10 @@ def read_csv(filename):
 def plot_data(df):
     dpi = 120
 
+    gs = gridspec.GridSpec(1, 1, 212, 122)
+
     # plot temperature, humidity and pressure on the same graph
-    fig, ax = plt.subplots(1, 1, figsize=((212/dpi), (122/dpi)), sharex=True, dpi=dpi)
+    fig, ax = plt.subplots(gs[0], figsize=((212/dpi), (122/dpi)), sharex=True, dpi=dpi)
     ax.plot(df['timestamp'], df['temperature'], 'black')
     ax.plot(df['timestamp'], df['humidity'], 'black')
 
@@ -38,9 +40,6 @@ def plot_data(df):
 
     # Make the graph fill the whole figure
     #plt.tight_layout()
-
-    # Use gridspec to fix the aspect ratio of the graph
-    gs = gridspec.GridSpec(212, 122)
     
     # Save plot to file
     plt.savefig('weather.png', bbox_inches='tight', pad_inches=0)
