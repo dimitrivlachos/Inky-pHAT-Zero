@@ -20,12 +20,10 @@ def plot_data(df):
     x_res = 212 * 2
     y_res = 122 * 2
 
-    plt.style.use('dark_background')
-
     # plot temperature, humidity and pressure on the same graph
     fig, ax = plt.subplots(1, 1, figsize=((x_res/dpi), (y_res/dpi)), sharex=True, dpi=dpi)
-    ax.plot(df['timestamp'], df['temperature'], 'white')
-    ax.plot(df['timestamp'], df['humidity'], 'white')
+    ax.plot(df['timestamp'], df['temperature'], 'black')
+    ax.plot(df['timestamp'], df['humidity'], 'black')
 
     # plit pressure on a second y-axis
     ax2 = ax.twinx()
