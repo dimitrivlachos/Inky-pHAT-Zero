@@ -20,14 +20,16 @@ def plot_data(df):
     x_res = 212 * 2
     y_res = 122 * 2
 
+    plt.style.use('dark_background')
+
     # plot temperature, humidity and pressure on the same graph
     fig, ax = plt.subplots(1, 1, figsize=((x_res/dpi), (y_res/dpi)), sharex=True, dpi=dpi)
-    ax.plot(df['timestamp'], df['temperature'], 'black')
-    ax.plot(df['timestamp'], df['humidity'], 'black')
+    ax.plot(df['timestamp'], df['temperature'], 'white')
+    ax.plot(df['timestamp'], df['humidity'], 'white')
 
     # plit pressure on a second y-axis
     ax2 = ax.twinx()
-    ax2.plot(df['timestamp'], df['pressure'], 'r')
+    ax2.plot(df['timestamp'], df['pressure'], 'red')
 
     #ax.spines[['right', 'top', 'left', 'bottom']].set_visible(False)
     #ax2.spines[['right', 'top', 'left', 'bottom']].set_visible(False)
@@ -49,8 +51,7 @@ def plot_data(df):
     # Set xlim to the minimum and maximum values of the timestamp column
     ax.set_xlim(df['timestamp'].min(), df['timestamp'].max())
 
-    # Make the graph fill the whole figure
-    #plt.tight_layout()
+    
     
     # Save plot to file
     plt.savefig('weather.png', bbox_inches='tight', pad_inches=0)
