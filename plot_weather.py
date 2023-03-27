@@ -29,12 +29,6 @@ def plot_data(df):
     ax2 = ax.twinx()
     ax2.plot(df['timestamp'], df['pressure'], 'red')
 
-    #ax.spines[['right', 'top', 'left', 'bottom']].set_visible(False)
-    #ax2.spines[['right', 'top', 'left', 'bottom']].set_visible(False)
-
-    ax.spines[['right', 'top']].set_visible(False)
-    ax2.spines[['right', 'top']].set_visible(False)
-
     ax.set_xticks([])
     ax.set_yticks([])
     ax2.set_yticks([])
