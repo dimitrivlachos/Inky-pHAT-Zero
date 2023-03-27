@@ -17,10 +17,11 @@ def read_csv(filename):
 def plot_data(df):
     dpi = 120
 
-    gs = gridspec.GridSpec(1, 1, 212, 122)
+    x_res = 212 * 2
+    y_res = 122 * 2
 
     # plot temperature, humidity and pressure on the same graph
-    fig, ax = plt.subplots(gs[0], figsize=((212/dpi), (122/dpi)), sharex=True, dpi=dpi)
+    fig, ax = plt.subplots(1, 1, figsize=((x_res/dpi), (y_res/dpi)), sharex=True, dpi=dpi)
     ax.plot(df['timestamp'], df['temperature'], 'black')
     ax.plot(df['timestamp'], df['humidity'], 'black')
 
@@ -28,8 +29,11 @@ def plot_data(df):
     ax2 = ax.twinx()
     ax2.plot(df['timestamp'], df['pressure'], 'r')
 
-    ax.spines[['right', 'top', 'left', 'bottom']].set_visible(False)
-    ax2.spines[['right', 'top', 'left', 'bottom']].set_visible(False)
+    #ax.spines[['right', 'top', 'left', 'bottom']].set_visible(False)
+    #ax2.spines[['right', 'top', 'left', 'bottom']].set_visible(False)
+
+    ax.spines[['right', 'top']].set_visible(False)
+    ax2.spines[['right', 'top']].set_visible(False)
 
     ax.set_xticks([])
     ax.set_yticks([])

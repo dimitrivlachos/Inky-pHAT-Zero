@@ -56,10 +56,74 @@ def update_display(city):
     inky_display.set_image(img)
     inky_display.show()
 
-def display_image():
-    img = Image.open('weather.png')
+def display_image(image_path):
+    #img = Image.open(image_path)
+    img = image_path
     inky_display.set_image(img)
     inky_display.show()
 
+def resize_image(image_path, resolution):
+    """
+    Resize an image to a given resolution while maintaining aspect ratio.
+    
+    :param image_path: Path to the input image.
+    :param resolution: Tuple containing the desired resolution in (width, height) format.
+    :return: PIL.Image object with the resized image.
+    """
+    # Open the image file using PIL
+    #image = Image.open(image_path)
+    image = image_path
+
+    # Get the original width and height of the image
+    width, height = image.size
+
+    # Get the new width and height based on the desired resolution
+    new_width, new_height = resolution
+
+    # Calculate the scaling factor based on the larger dimension
+    scaling_factor = max(new_width / width, new_height / height)
+
+    # Calculate the new width and height based on the scaling factor
+    new_width = int(width * scaling_factor)
+    new_height = int(height * scaling_factor)
+
+    # Resize the image using the calculated new width and height
+    resized_image = image.resize((new_width, new_height), Image.ANTIALIAS)
+
+    return resized_image
+
 #update_display('London')
-display_image()
+
+def add_border(image_path, border_width):
+    """
+    Add a white border to the right side of an image.
+    
+    :param image_path: Path to the input image.
+    :param border_width: Width of the border in pixels.
+    :return: PIL.Image object with the bordered image.
+    """
+    # Open the image file using PIL
+    image = Image.open(image_path)
+
+    # Get the original width and height of the image
+    width, height = image.size
+
+    # Calculate the new width and height based on the border width
+    new_width = width + border_width
+    new_height = height
+
+    # Create a new image with the larger dimensions and fill it with white
+    new_image = Image.new(image.mode, (new_width, new_height), color='white')
+
+    # Paste the original image onto the new image, leaving a white border on the right side
+    new_image.paste(image, (0, 0))
+
+    return new_image
+
+# Call the add_border function with input image and border width
+bordered_image = add_border("weather.png", 50)
+
+# Call the resize_image function with input image and desired resolution
+resized_image = resize_image(bordered_image, (212, 122))
+
+display_image(resized_image)
