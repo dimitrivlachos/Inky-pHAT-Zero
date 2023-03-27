@@ -39,10 +39,12 @@ def plot_data(df):
     ax.set_yticks([])
     ax2.set_yticks([])
 
+    line_thickness = 3
+
     # Set line width
-    ax.lines[0].set_linewidth(2)
-    ax.lines[1].set_linewidth(2)
-    ax2.lines[0].set_linewidth(2)
+    ax.lines[0].set_linewidth(line_thickness)
+    ax.lines[1].set_linewidth(line_thickness)
+    ax2.lines[0].set_linewidth(line_thickness)
 
     # Set xlim to the minimum and maximum values of the timestamp column
     ax.set_xlim(df['timestamp'].min(), df['timestamp'].max())
