@@ -19,6 +19,8 @@ def plot_data(df):
 
     x_res = 212 * 2
     y_res = 122 * 2
+    
+    line_thickness = 3
 
     # plot temperature, humidity and pressure on the same graph
     fig, ax = plt.subplots(1, 1, figsize=((x_res/dpi), (y_res/dpi)), sharex=True, dpi=dpi)
@@ -32,8 +34,6 @@ def plot_data(df):
     ax.set_xticks([])
     ax.set_yticks([])
     ax2.set_yticks([])
-
-    line_thickness = 3
 
     # Set line width
     ax.lines[0].set_linewidth(line_thickness)

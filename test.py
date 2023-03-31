@@ -121,9 +121,11 @@ def add_border(image_path, border_width):
     return new_image
 
 # Call the add_border function with input image and border width
-bordered_image = add_border("weather.png", 50)
+#bordered_image = add_border("weather.png", 50)
 
 # Call the resize_image function with input image and desired resolution
-resized_image = resize_image(bordered_image, (212, 122))
+#resized_image = resize_image(bordered_image, (212, 122))
 
-display_image(resized_image)
+#display_image(resized_image)
+
+display_image(Image.open('Inky-PHAT-Weather-background.jpg'))
